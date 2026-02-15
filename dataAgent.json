@@ -1,0 +1,182 @@
+{
+  "project_name": "Libertas Alpha",
+  "version": "1.0.0",
+  "description": "A modern, decentralized ecosystem dedicated to realizing freedom through innovation aligned with UN Sustainable Development Goals (SDGs).",
+  "core_philosophy": {
+    "mission": "Foster an ecosystem nurturing asset development, personnel growth, and innovation via data analytics for social impact.",
+    "freedom_definition": "A tangible outcome harnessed directly from the forefront of innovation.",
+    "ideology": "Non-profit, powered by a network of Human Nodes.",
+    "incentive_model": "Impact Equity (ownership of social/financial outcomes) measured by Impact Tokens."
+  },
+  "ecosystem_components": {
+    "ventures": [
+      {
+        "name": "Micro Ventures Initiative (MVI)",
+        "description": "Empowering grassroots entrepreneurs through blockchain tokenization.",
+        "status": "LIVE"
+      },
+      {
+        "name": "Libertas Estate",
+        "description": "Real estate tokenization platform for sustainable growth.",
+        "status": "COMING SOON"
+      },
+      {
+        "name": "Tradex",
+        "description": "Trading and commerce platform for sustainable value creation.",
+        "status": "COMING SOON"
+      }
+    ],
+    "core_features": [
+      "Social Impact aligned with UN SDGs",
+      "Sustainable Revenue reinvested via Multi-Sig Community Treasury",
+      "Decentralized Governance with community-driven decision making"
+    ]
+  },
+  "strategic_focus": {
+    "primary_region": "Nigeria",
+    "rationale": "Epicenter of global Real-World Asset (RWA) revolution and digital transformation.",
+    "goal": "Scale sustainable development models globally using Nigerian ingenuity."
+  },
+  "technological_foundation": {
+    "strategy": "Layer-Agnostic & Interoperable",
+    "rwa_tokenization": {
+      "identification": "ERC-721",
+      "equity_yield": "ERC-20/4626"
+    },
+    "automation": "Smart Contracts and Reactive Smart Contracts (RSCs)",
+    "identity": "Soulbound Credentials (SBTs) for non-speculative expertise verification"
+  },
+  "team": [
+    {
+      "name": "Zyre",
+      "role": "The Extensionist"
+    },
+    {
+      "name": "Ewuru Samson Uzoma",
+      "role": "Software Solutions Expert"
+    },
+    {
+      "name": "Nwachukwu Victor",
+      "role": "CEO at Legendaire"
+    },
+    {
+      "name": "Jamike Gabeson",
+      "role": "Blocksquare Ambassador"
+    },
+    {
+      "name": "Nduka Patience M.A.Ed",
+      "role": "Translations Manager"
+    },
+    {
+      "name": "Favor Ukah",
+      "role": "CEO at New Eden Comfort Realty"
+    },
+    {
+      "name": "Ndip Youville",
+      "role": "International Correspondent"
+    },
+    {
+      "name": "Subenghu Excel",
+      "role": "Analyst Coach"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Where is Libertas Alpha based?",
+      "answer": "Strategically positioned in Nigeria, recognized as the epicenter of digital transformation and the real-world asset revolution in Africa."
+    },
+    {
+      "question": "What is the purpose of Libertas Alpha?",
+      "answer": "To foster an ecosystem that nurtures asset development, personnel growth, and cutting-edge innovation, all while harnessing data analytics for sustainable social impact."
+    },
+    {
+      "question": "How does Libertas Alpha measure social impact?",
+      "answer": "Through objective SDG metrics and contribution metrics, quantified via transferable Impact Tokens."
+    },
+    {
+      "question": "What makes Libertas Alpha Technologies unique?",
+      "answer": "A non-profit ideology powered by Human Nodes, utilizing Impact Equity systems and decentralized governance with transparent, multi-sig treasury controls."
+    },
+    {
+      "question": "How is financial sustainability ensured?",
+      "answer": "Revenue from ventures is governed by Multi-Signature Community Treasury Smart Contracts, ensuring transparent flow and reinvestment into the ecosystem."
+    },
+    {
+      "question": "Who does Libertas Alpha partner with?",
+      "answer": "NGOs, academic institutions, and compliant financial service providers aligned with the UN Sustainable Development Goals."
+    }
+  ],
+  "common_user_queries": [
+    {
+      "question": "How can I become a Human Node?",
+      "answer": "You can join by contributing your skills and expertise to the network's ventures. Explore the 'Build Opportunities' section on your dashboard to find active projects and jobs."
+    },
+    {
+      "question": "What are Impact Tokens and can they be traded?",
+      "answer": "Impact Tokens represent verifiable ownership of the social and financial impact created by your contributions. For specific transferability and secondary market rules, please refer to the latest Whitepaper."
+    },
+    {
+      "question": "How do I participate in the Micro Ventures Initiative (MVI)?",
+      "answer": "Access the MVI section via the dashboard to browse grassroots projects. You can contribute via skills, capital, or community engagement to earn Impact Equity."
+    },
+    {
+      "question": "Is my data and investment safe on the platform?",
+      "answer": "Yes, we utilize blockchain for transparency, multi-signature treasury controls for fund safety, and strict KYA/KYC protocols to ensure a secure environment."
+    },
+    {
+      "question": "What are Soulbound Credentials (SBTs) used for?",
+      "answer": "SBTs are used to certify your training and expertise within the ecosystem (e.g., via the Certify program). They ensure that your professional achievements are non-speculative and bound to your identity."
+    },
+    {
+      "question": "How does Real-World Asset (RWA) tokenization work?",
+      "answer": "We bridge physical assets (like real estate) to the blockchain using ERC-721 for identification and ERC-20/4626 for fractionalized ownership, allowing for broader access and liquid markets."
+    },
+    {
+      "question": "What is the difference between the Affiliate and Certify programs?",
+      "answer": "The Affiliate program allows you to earn commissions by promoting products, while the Certify program provides professional training tracks with digital certification."
+    },
+    {
+      "question": "Can I access Libertas Alpha services outside of Nigeria?",
+      "answer": "While our strategic focus is on Nigeria for its high growth potential, the Libertas ecosystem is designed to be scalable and globally accessible via decentralized protocols."
+    },
+    {
+      "question": "What should I do if I need personalized support?",
+      "answer": "You can use the AI Support Assistant 24/7 or escalate to our human support team via WhatsApp for more complex inquiries."
+    },
+    {
+      "question": "How is the roadmap updated?",
+      "answer": "The roadmap is updated periodically based on community governance and strategic milestones. Current priorities include the RWA Marketplace launch and Master Ventures rollout."
+    }
+  ],
+  "roadmap": {
+    "phase_1": {
+      "period": "Q4 2025 – Q1 2026",
+      "goals": [
+        "Contributor DApp v1.0",
+        "Affiliate Standardization",
+        "Governance Forum",
+        "AGD Curriculum"
+      ]
+    },
+    "phase_2": {
+      "period": "Q2 – Q4 2026",
+      "goals": [
+        "RWA Marketplace Launch",
+        "Master Ventures Roll out",
+        "International Partnerships"
+      ]
+    }
+  },
+  "external_resources": {
+    "medium": "https://medium.com/@libertasalpha_10290",
+    "socials": [
+      "X (Twitter)",
+      "Discord",
+      "LinkedIn"
+    ],
+    "support": {
+      "ai_assistant": "Available 24/7 on website",
+      "human_escalation": "WhatsApp via dedicated link"
+    }
+  }
+}
