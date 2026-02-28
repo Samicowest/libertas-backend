@@ -18,7 +18,9 @@ services:
       - key: JWT_SECRET
         generateValue: true   # Render auto-generates a secure random value
       - key: CLIENT_URL
-        sync: false            # Set this manually in the Render dashboard
+        sync: false            # Set this manually in the Render dashboard (e.g. https://libertasalpha.com)
+      - key: SERVER_URL
+        sync: false            # Set this manually in the Render dashboard (e.g. https://libertas-backend-zger.onrender.com)
       - key: EMAIL_USER
         sync: false
       - key: EMAIL_PASS
