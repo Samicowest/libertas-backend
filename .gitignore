@@ -1,5 +1,26 @@
+# Dependencies
 node_modules
+server/node_modules
+
+# Environment variables — NEVER commit these
 .env
+server/.env
+.env.production
+.env.local
+
+# Build output
 dist
+build
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Logs
 *.log
+logs/
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/

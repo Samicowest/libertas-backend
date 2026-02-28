@@ -16,6 +16,35 @@ type UseAuthOptions = {
 const USER_STORAGE_KEY = "libertas_user";
 const TOKEN_STORAGE_KEY = "libertas_token";
 
+// ---------------------------------------------------------------------------
+// safeJson — parses the response as JSON only if the server actually sent JSON.
+// If it gets back HTML (e.g. a Render sleeping-service page, an nginx 502, or
+// a misconfigured proxy), it logs the raw text so you can see exactly what
+// the server returned, then throws a human-readable error.
+// ---------------------------------------------------------------------------
+async function safeJson(response: Response): Promise<unknown> {
+  const contentType = response.headers.get('content-type') ?? '';
+  const isJson = contentType.includes('application/json');
+
+  if (!isJson) {
+    // Read raw text so we can log the actual HTML / error page
+    const rawText = await response.text();
+    console.error(
+      `[API] Expected JSON but received "${contentType}" from ${response.url}\n` +
+      `HTTP status: ${response.status} ${response.statusText}\n` +
+      `API_URL configured as: ${API_URL}\n` +
+      `Raw response (first 500 chars):\n${rawText.slice(0, 500)}`
+    );
+    throw new Error(
+      `Server returned a non-JSON response (${response.status} ${response.statusText}). ` +
+      `Check the browser console for the full raw response. ` +
+      `This usually means the API URL is wrong, the backend is down/sleeping, or a proxy is returning an error page.`
+    );
+  }
+
+  return response.json();
+}
+
 export function useAuth(options?: UseAuthOptions) {
   const { redirectOnUnauthenticated = false, redirectPath = "/login" } =
     options ?? {};
@@ -30,24 +59,26 @@ export function useAuth(options?: UseAuthOptions) {
   const login = useCallback(async (email: string, password: string) => {
     setIsLoading(true);
     try {
+      console.log(`[Auth] POST ${API_URL}/auth/login`);
       const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Login failed');
+        const errorData = await safeJson(response) as { message?: string };
+        throw new Error(errorData.message || `Login failed (HTTP ${response.status})`);
       }
 
-      const { result, token } = await response.json();
-      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(result));
-      localStorage.setItem(TOKEN_STORAGE_KEY, token);
-      setUser(result);
-      return result;
+      const data = await safeJson(response) as { result: User; token: string };
+      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(data.result));
+      localStorage.setItem(TOKEN_STORAGE_KEY, data.token);
+      setUser(data.result);
+      return data.result;
+    } catch (err) {
+      console.error('[Auth] login error:', err);
+      throw err;
     } finally {
       setIsLoading(false);
     }
@@ -56,24 +87,22 @@ export function useAuth(options?: UseAuthOptions) {
   const signup = useCallback(async (username: string, email: string, password: string) => {
     setIsLoading(true);
     try {
+      console.log(`[Auth] POST ${API_URL}/auth/register`);
       const response = await fetch(`${API_URL}/auth/register`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        console.log(errorData);
-        throw new Error(errorData.message || 'Signup failed');
+        const errorData = await safeJson(response) as { message?: string };
+        throw new Error(errorData.message || `Signup failed (HTTP ${response.status})`);
       }
 
-      const data = await response.json();
+      const data = await safeJson(response);
       return data;
     } catch (err) {
-      console.error(err);
+      console.error('[Auth] signup error:', err);
       throw err;
     } finally {
       setIsLoading(false);
@@ -82,7 +111,6 @@ export function useAuth(options?: UseAuthOptions) {
 
   const logout = useCallback(async () => {
     setIsLoading(true);
-    // No need to call a backend endpoint for logout with JWT, just clear local storage
     await new Promise(resolve => setTimeout(resolve, 500));
     localStorage.removeItem(USER_STORAGE_KEY);
     localStorage.removeItem(TOKEN_STORAGE_KEY);
@@ -93,15 +121,19 @@ export function useAuth(options?: UseAuthOptions) {
   const forgotPassword = useCallback(async (email: string) => {
     setIsLoading(true);
     try {
+      console.log(`[Auth] POST ${API_URL}/auth/forgot-password`);
       const response = await fetch(`${API_URL}/auth/forgot-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
 
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Request failed');
+      const data = await safeJson(response) as { message?: string };
+      if (!response.ok) throw new Error(data.message || `Request failed (HTTP ${response.status})`);
       return data;
+    } catch (err) {
+      console.error('[Auth] forgotPassword error:', err);
+      throw err;
     } finally {
       setIsLoading(false);
     }
@@ -110,15 +142,19 @@ export function useAuth(options?: UseAuthOptions) {
   const resetPassword = useCallback(async (token: string, password: string) => {
     setIsLoading(true);
     try {
+      console.log(`[Auth] POST ${API_URL}/auth/reset-password`);
       const response = await fetch(`${API_URL}/auth/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, password }),
       });
 
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Reset failed');
+      const data = await safeJson(response) as { message?: string };
+      if (!response.ok) throw new Error(data.message || `Reset failed (HTTP ${response.status})`);
       return data;
+    } catch (err) {
+      console.error('[Auth] resetPassword error:', err);
+      throw err;
     } finally {
       setIsLoading(false);
     }
